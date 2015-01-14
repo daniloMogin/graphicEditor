@@ -66,8 +66,8 @@ public class DiagramView extends JInternalFrame implements
 	private JScrollBar sbHorizontal;
 
 	// inicijalna pozicija skrol bara, vazna kod pomeranja skrol bara
-	private int hScrollValue = 140;
-	private int vScrollValue = 140;
+	private int hScrollValue = 1490;
+	private int vScrollValue = 1490;
 
 	double translateX = 0;
 	double translateY = 0;
@@ -172,8 +172,10 @@ public class DiagramView extends JInternalFrame implements
 		framework.setBackground(new Color(127, 121, 96));
 
 		// postavljanje horiyontalnog i vertikalnog skrol bara
-		sbHorizontal = new JScrollBar(JScrollBar.HORIZONTAL, 140, 20, 0, 300);
-		sbVertical = new JScrollBar(JScrollBar.VERTICAL, 140, 20, 0, 300);
+		sbHorizontal = new JScrollBar(JScrollBar.HORIZONTAL, hScrollValue, 20,
+				0, 3000);
+		sbVertical = new JScrollBar(JScrollBar.VERTICAL, vScrollValue, 20, 0,
+				3000);
 
 		sbHorizontal.addAdjustmentListener(this);
 		sbVertical.addAdjustmentListener(this);
@@ -245,11 +247,11 @@ public class DiagramView extends JInternalFrame implements
 
 				}
 				// Zatim je potrebno da skaliranje održimo u intervalu [0.2, 5]
-				if (newScaling < 0.2) {
-					newScaling = 0.2;
+				if (newScaling < 0.1) {
+					newScaling = 0.1;
 
-				} else if (newScaling > 5) {
-					newScaling = 5;
+				} else if (newScaling > 10) {
+					newScaling = 10;
 				}
 
 				/*
@@ -406,7 +408,7 @@ public class DiagramView extends JInternalFrame implements
 			Handle handlePosition) {
 		double x = 0, y = 0;
 
-		// Određivanje y koordinate
+		// Doređivanje y koordinate
 
 		// Ako su gornji hendlovi
 		if (handlePosition == Handle.NorthWest
@@ -469,6 +471,7 @@ public class DiagramView extends JInternalFrame implements
 			case West:
 				cursor = Cursor.getPredefinedCursor(Cursor.W_RESIZE_CURSOR);
 				break;
+
 			case SouthEast:
 				cursor = Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR);
 				break;
@@ -642,10 +645,10 @@ public class DiagramView extends JInternalFrame implements
 			} else {
 				newScaling *= scaleY;
 			}
-			if (newScaling < 0.2)
-				newScaling = 0.2;
-			if (newScaling > 5)
-				newScaling = 5;
+			if (newScaling < 0.1)
+				newScaling = 0.1;
+			if (newScaling > 10)
+				newScaling = 10;
 			transformation.setToScale(newScaling, newScaling);
 		}
 
@@ -812,11 +815,11 @@ public class DiagramView extends JInternalFrame implements
 
 		newScaling *= scalingFactor;
 
-		// Zatim je potrebno da skaliranje održimo u intervalu [0.2, 5]
-		if (newScaling < 0.2)
-			newScaling = 0.2;
-		if (newScaling > 5)
-			newScaling = 5;
+		// Zatim je potrebno da skaliranje održimo u intervalu [0.1, 10]
+		if (newScaling < 0.1)
+			newScaling = 0.1;
+		if (newScaling > 10)
+			newScaling = 10;
 
 		/*
 		 * newScaling je novi parametar skaliranja (članovi m00 i m11
@@ -852,11 +855,11 @@ public class DiagramView extends JInternalFrame implements
 
 		newScaling /= scalingFactor;
 
-		// Zatim je potrebno da skaliranje održimo u intervalu [0.2, 5]
-		if (newScaling < 0.2)
-			newScaling = 0.2;
-		if (newScaling > 5)
-			newScaling = 5;
+		// Zatim je potrebno da skaliranje održimo u intervalu [0.1, 10]
+		if (newScaling < 0.1)
+			newScaling = 0.1;
+		if (newScaling > 10)
+			newScaling = 10;
 
 		/*
 		 * newScaling je novi parametar skaliranja (članovi m00 i m11
