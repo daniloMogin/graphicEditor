@@ -11,8 +11,8 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
-import workspace.Project;
 import workspace.Diagram;
+import workspace.Project;
 
 public class WorkspaceTreeEditor extends DefaultTreeCellEditor implements
 		ActionListener {

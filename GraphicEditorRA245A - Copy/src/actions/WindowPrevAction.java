@@ -9,7 +9,6 @@ import javax.swing.KeyStroke;
 import app.MainFrame;
 
 public class WindowPrevAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */

@@ -10,11 +10,10 @@ import java.awt.geom.Point2D;
 import workspace.view.painters.TrianglePainter;
 
 public class TriangleElement extends DiagramDevice {
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 9807970398156824L;
 
 	public TriangleElement(Point2D position, Dimension size, Stroke stroke,
 			Paint paint, Color strokeColor) {
@@ -22,7 +21,7 @@ public class TriangleElement extends DiagramDevice {
 		// TODO Auto-generated constructor stub
 		elementPainter = new TrianglePainter(this);
 	}
-	
+
 	public TriangleElement(TriangleElement triangle) {
 		super(triangle);
 		setName("triangle");

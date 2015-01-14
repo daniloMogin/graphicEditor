@@ -16,7 +16,7 @@ public class Project implements TreeNode, UpdateListener, Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 3701281967651913182L;
 
 	private ArrayList<Diagram> diagrams = new ArrayList<Diagram>();
 	private String name;

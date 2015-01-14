@@ -274,7 +274,8 @@ public class ActionManager {
 		this.toolsAction = toolsAction;
 	}
 
-	public void setDeleteElementAction(EditDeleteElementAction deleteElementAction) {
+	public void setDeleteElementAction(
+			EditDeleteElementAction deleteElementAction) {
 		this.deleteElementAction = deleteElementAction;
 	}
 

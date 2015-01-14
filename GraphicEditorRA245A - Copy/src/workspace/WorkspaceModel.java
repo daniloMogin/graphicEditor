@@ -3,7 +3,6 @@ package workspace;
 import javax.swing.tree.DefaultTreeModel;
 
 public class WorkspaceModel extends DefaultTreeModel {
-
 	/**
 	 * 
 	 */

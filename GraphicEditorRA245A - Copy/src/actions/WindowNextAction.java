@@ -9,14 +9,13 @@ import javax.swing.KeyStroke;
 import app.MainFrame;
 
 public class WindowNextAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */
+	private static final long serialVersionUID = -332796244934354280L;
+
 	private int current;
 	private int next;
-
-	private static final long serialVersionUID = -332796244934354280L;
 
 	public WindowNextAction() {
 

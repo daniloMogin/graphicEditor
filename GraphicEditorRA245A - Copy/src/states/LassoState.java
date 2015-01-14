@@ -1,6 +1,3 @@
-/**
- * 
- */
 package states;
 
 import java.awt.event.MouseEvent;
@@ -9,8 +6,11 @@ import java.awt.geom.Rectangle2D;
 
 import workspace.view.DiagramView;
 
-@SuppressWarnings("serial")
 public class LassoState extends State {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7157683638604735488L;
 
 	Rectangle2D rect = new Rectangle2D.Double();
 

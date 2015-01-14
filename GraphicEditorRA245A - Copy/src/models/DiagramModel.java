@@ -15,8 +15,8 @@ public class DiagramModel implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3L;
-	
+	private static final long serialVersionUID = 4115509459136828947L;
+
 	private String name;
 
 	protected ArrayList<DiagramElement> diagramElements = new ArrayList<DiagramElement>();

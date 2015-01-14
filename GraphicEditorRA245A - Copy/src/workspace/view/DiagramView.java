@@ -78,8 +78,8 @@ public class DiagramView extends JInternalFrame implements
 	// tacka koja nam za sada sluzi za lasso
 	private Point2D lastPosition = null;
 	private Rectangle2D selectionRectangle = new Rectangle2D.Double();
-	
-	private CommandManager commandManager=new CommandManager();
+
+	private CommandManager commandManager = new CommandManager();
 
 	private AffineTransform transformation = new AffineTransform();
 

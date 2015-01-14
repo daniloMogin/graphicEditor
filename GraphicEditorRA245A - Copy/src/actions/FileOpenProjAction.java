@@ -10,12 +10,11 @@ import java.io.ObjectInputStream;
 import javax.swing.JFileChooser;
 import javax.swing.KeyStroke;
 
-import app.MainFrame;
 import workspace.Project;
 import workspace.view.DiagramView;
+import app.MainFrame;
 
 public class FileOpenProjAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */

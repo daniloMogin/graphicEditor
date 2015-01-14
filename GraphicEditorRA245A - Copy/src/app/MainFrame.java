@@ -28,7 +28,6 @@ import workspace.view.DiagramView;
 import actions.ActionManager;
 
 public class MainFrame extends JFrame implements ClipboardOwner {
-
 	/**
 	 * 
 	 */
@@ -118,7 +117,7 @@ public class MainFrame extends JFrame implements ClipboardOwner {
 	public ActionManager getActionManager() {
 		return actionManager;
 	}
-	
+
 	public static MainFrame getInstance() {
 		if (instance == null) {
 			instance = new MainFrame();

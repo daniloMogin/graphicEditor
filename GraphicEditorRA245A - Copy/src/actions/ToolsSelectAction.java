@@ -2,11 +2,10 @@ package actions;
 
 import java.awt.event.ActionEvent;
 
-import app.MainFrame;
 import workspace.view.DiagramView;
+import app.MainFrame;
 
 public class ToolsSelectAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */

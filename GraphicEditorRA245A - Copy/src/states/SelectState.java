@@ -4,10 +4,10 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 
-import app.MainFrame;
 import models.elements.DiagramElement;
 import workspace.view.DiagramView;
 import workspace.view.DiagramView.Handle;
+import app.MainFrame;
 
 public class SelectState extends State {
 	/**

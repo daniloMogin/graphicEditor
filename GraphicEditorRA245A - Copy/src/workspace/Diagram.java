@@ -12,7 +12,7 @@ public class Diagram implements TreeNode, Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 8898869298625272545L;
 
 	private String name;
 	private Project parent;

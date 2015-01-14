@@ -7,7 +7,7 @@ public class State implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 9L;
+	private static final long serialVersionUID = -3391066231033149876L;
 
 	public void mousePressed(MouseEvent e) {
 	}

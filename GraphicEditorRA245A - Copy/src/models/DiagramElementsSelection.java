@@ -10,10 +10,8 @@ import java.util.ArrayList;
 
 import models.elements.DiagramElement;
 
+public class DiagramElementsSelection implements Transferable, ClipboardOwner {
 
-public class DiagramElementsSelection implements Transferable,ClipboardOwner {
-	
-	
 	static public DataFlavor elementFlavor;
 	private DataFlavor[] supportedFlavors = { elementFlavor };
 	public ArrayList<DiagramElement> diagramElements = new ArrayList<DiagramElement>();

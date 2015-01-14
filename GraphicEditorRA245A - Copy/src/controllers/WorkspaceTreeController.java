@@ -9,10 +9,10 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
 
-import app.MainFrame;
 import workspace.Diagram;
 import workspace.Workspace;
 import workspace.view.DiagramView;
+import app.MainFrame;
 
 public class WorkspaceTreeController implements TreeSelectionListener,
 		MouseListener {

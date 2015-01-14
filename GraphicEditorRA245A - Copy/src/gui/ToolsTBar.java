@@ -9,14 +9,13 @@ import javax.swing.JToolBar;
 import app.MainFrame;
 
 public class ToolsTBar extends JToolBar {
-
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2265762358252446382L;
 
 	public ToolsTBar() {
-		
+
 		/**
 		 * Dodavanje akcija u tools Toolbar
 		 * 
@@ -30,7 +29,8 @@ public class ToolsTBar extends JToolBar {
 		setLayout(new FlowLayout());
 
 		add(MainFrame.getInstance().getActionManager().getToolsSelectAction());
-		add(MainFrame.getInstance().getActionManager().getToolsRectangleAction());
+		add(MainFrame.getInstance().getActionManager()
+				.getToolsRectangleAction());
 		add(MainFrame.getInstance().getActionManager().getToolsCircleAction());
 		add(MainFrame.getInstance().getActionManager().getToolsTriangleAction());
 		add(MainFrame.getInstance().getActionManager().getToolsStarAction());

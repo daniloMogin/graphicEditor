@@ -10,11 +10,10 @@ import java.awt.geom.Point2D;
 import workspace.view.painters.RectanglePainter;
 
 public class RectangleElement extends DiagramDevice {
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7L;
+	private static final long serialVersionUID = -7052562706077101502L;
 
 	public RectangleElement(Point2D position, Dimension size, Stroke stroke,
 			Paint paint, Color strokeColor) {

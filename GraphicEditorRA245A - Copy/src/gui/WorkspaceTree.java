@@ -15,7 +15,7 @@ public class WorkspaceTree extends JTree {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 7939097511462967322L;
 
 	public WorkspaceTree() {
 

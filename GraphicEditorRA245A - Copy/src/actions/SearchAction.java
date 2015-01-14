@@ -6,11 +6,10 @@ import java.awt.event.KeyEvent;
 import javax.swing.KeyStroke;
 
 public class SearchAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -1593290732117170664L;
 
 	public SearchAction() {
 

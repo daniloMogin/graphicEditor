@@ -11,15 +11,14 @@ import java.io.ObjectOutputStream;
 import javax.swing.JFileChooser;
 import javax.swing.KeyStroke;
 
-import app.MainFrame;
 import workspace.Project;
+import app.MainFrame;
 
 public class FileSaveAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2772954487335944696L;
 
 	public FileSaveAction() {
 

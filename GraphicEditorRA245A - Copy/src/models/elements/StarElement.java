@@ -10,11 +10,10 @@ import java.awt.geom.Point2D;
 import workspace.view.painters.StarPainter;
 
 public class StarElement extends DiagramDevice {
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 3036920368558221865L;
 
 	public StarElement(Point2D position, Dimension size, Stroke stroke,
 			Paint paint, Color strokeColor) {
@@ -22,7 +21,7 @@ public class StarElement extends DiagramDevice {
 		// TODO Auto-generated constructor stub
 		elementPainter = new StarPainter(this);
 	}
-	
+
 	public StarElement(StarElement star) {
 		super(star);
 		setName("star");
@@ -37,7 +36,7 @@ public class StarElement extends DiagramDevice {
 		StarElement starElement = new StarElement(position, new Dimension(40,
 				40), new BasicStroke((float) (2), BasicStroke.CAP_ROUND,
 				BasicStroke.JOIN_ROUND), fill, Color.BLACK);
-		
+
 		starElement.setName("Star: " + eleNum);
 
 		return starElement;

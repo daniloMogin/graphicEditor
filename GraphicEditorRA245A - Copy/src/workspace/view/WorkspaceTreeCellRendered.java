@@ -12,7 +12,6 @@ import workspace.Diagram;
 import workspace.Project;
 
 public class WorkspaceTreeCellRendered extends DefaultTreeCellRenderer {
-
 	/**
 	 * 
 	 */

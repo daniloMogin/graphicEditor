@@ -6,16 +6,15 @@ import java.util.Iterator;
 
 import javax.swing.KeyStroke;
 
-import app.MainFrame;
 import models.elements.DiagramElement;
 import workspace.view.DiagramView;
+import app.MainFrame;
 
 public class EditDeleteElementAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -2155351510730328872L;
 
 	public EditDeleteElementAction() {
 
@@ -29,7 +28,6 @@ public class EditDeleteElementAction extends AbstractGEDAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		deleteSelection();
 
 	}

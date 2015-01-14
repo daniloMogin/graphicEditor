@@ -13,11 +13,10 @@ import workspace.Project;
 import workspace.Workspace;
 
 public class EditDeleteFromTreeAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 4753982775593231911L;
 
 	public EditDeleteFromTreeAction() {
 
@@ -33,7 +32,6 @@ public class EditDeleteFromTreeAction extends AbstractGEDAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		deleteAction();
 
 	}

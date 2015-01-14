@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class Tools extends JDialog {
-
 	/**
 	 * 
 	 */
@@ -22,7 +21,7 @@ public class Tools extends JDialog {
 
 		setSize(120, 200);
 		setLocation(1070, 220);
-//		setLocationRelativeTo(parent);
+		// setLocationRelativeTo(parent);
 		setResizable(false);
 		setAlwaysOnTop(true);
 		setLayout(new GridLayout(3, 2, 15, 15));
@@ -43,7 +42,6 @@ public class Tools extends JDialog {
 		rectangleComWin.setToolTipText("Draw Rectangle");
 		JButton circleComWin = new JButton(iconCircle);
 		circleComWin.setToolTipText("Draw Circle");
-
 
 		add(selectComWin);
 		add(rectangleComWin);

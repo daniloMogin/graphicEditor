@@ -8,11 +8,10 @@ import javax.swing.KeyStroke;
 import app.MainFrame;
 
 public class WindowHorAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2639011187695210682L;
 
 	private int aveilableHeight;
 

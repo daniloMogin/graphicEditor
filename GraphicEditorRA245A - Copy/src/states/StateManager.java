@@ -8,7 +8,7 @@ public class StateManager implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 8L;
+	private static final long serialVersionUID = 2833525174093325696L;
 
 	private State currentState;
 
@@ -31,7 +31,7 @@ public class StateManager implements Serializable {
 		lassoState = new LassoState(med);
 		resizeState = new ResizeState(med);
 		moveState = new MoveState(med);
-		
+
 		currentState = selectState;
 	}
 
@@ -58,7 +58,7 @@ public class StateManager implements Serializable {
 	public void setLassoState() {
 		currentState = lassoState;
 	}
-	
+
 	public void setResizeState() {
 		currentState = resizeState;
 	}

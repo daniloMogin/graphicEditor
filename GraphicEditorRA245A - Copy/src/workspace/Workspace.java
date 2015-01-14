@@ -74,10 +74,9 @@ public class Workspace implements TreeNode, Serializable {
 	public int getProjectsCount() {
 		return projects.size();
 	}
-	
+
 	public ArrayList<Project> getProjects() {
 		return projects;
 	}
-	
-	
+
 }

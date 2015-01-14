@@ -9,7 +9,6 @@ import app.MainFrame;
 import dialogs.Tools;
 
 public class ToolsAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */

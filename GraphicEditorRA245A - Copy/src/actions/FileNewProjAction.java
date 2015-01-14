@@ -5,16 +5,15 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.KeyStroke;
 
-import app.MainFrame;
 import workspace.Project;
 import workspace.Workspace;
+import app.MainFrame;
 
 public class FileNewProjAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -6275860965623052537L;
 
 	public FileNewProjAction() {
 
@@ -37,7 +36,7 @@ public class FileNewProjAction extends AbstractGEDAction {
 
 	public void fileNewProject() {
 		Object x = MainFrame.getInstance().getWorkspaceModel().getRoot();
-		Project p = new Project((Workspace)x," ");
+		Project p = new Project((Workspace) x, " ");
 		MainFrame.getInstance().getWorkspaceTree().addProject(p);
 		// Diagram d = new Diagram(" ");
 		// p.addDiagram(d);

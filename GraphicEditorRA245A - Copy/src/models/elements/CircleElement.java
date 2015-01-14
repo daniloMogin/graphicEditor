@@ -10,11 +10,10 @@ import java.awt.geom.Point2D;
 import workspace.view.painters.CirclePainter;
 
 public class CircleElement extends DiagramDevice {
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6L;
+	private static final long serialVersionUID = 3170529198096119246L;
 
 	public CircleElement(Point2D position, Dimension size, Stroke stroke,
 			Paint paint, Color strokeColor) {
@@ -34,9 +33,10 @@ public class CircleElement extends DiagramDevice {
 		Point2D position = (Point2D) pos.clone();
 
 		Paint fill = Color.WHITE;
-		CircleElement circEl = new CircleElement(position, new Dimension(80, 40),
-				new BasicStroke((float) (2), BasicStroke.CAP_SQUARE,
-						BasicStroke.JOIN_BEVEL), fill, Color.BLACK);
+		CircleElement circEl = new CircleElement(position,
+				new Dimension(80, 40), new BasicStroke((float) (2),
+						BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL), fill,
+				Color.BLACK);
 		circEl.setName("Circle " + elemNo);
 		return circEl;
 	}

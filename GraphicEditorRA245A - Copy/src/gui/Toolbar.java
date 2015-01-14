@@ -12,14 +12,13 @@ import javax.swing.UIManager;
 import app.MainFrame;
 
 public class Toolbar extends JToolBar {
-
-	private UIManager.LookAndFeelInfo[] laf;
-	private JComboBox jcbLaf;
-
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1209699209668701828L;
+	
+	private UIManager.LookAndFeelInfo[] laf;
+	private JComboBox jcbLaf;
 
 	public Toolbar() {
 
@@ -39,7 +38,7 @@ public class Toolbar extends JToolBar {
 		add(MainFrame.getInstance().getActionManager().getFileSaveAction());
 		add(MainFrame.getInstance().getActionManager().getFileSaveAsAction());
 		addSeparator();
-		
+
 		add(MainFrame.getInstance().getActionManager().getUndoAction());
 		add(MainFrame.getInstance().getActionManager().getRedoAction());
 		addSeparator();

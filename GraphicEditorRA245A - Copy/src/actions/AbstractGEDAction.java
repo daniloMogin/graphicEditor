@@ -7,7 +7,6 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public abstract class AbstractGEDAction extends AbstractAction {
-
 	/**
 	 * 
 	 */

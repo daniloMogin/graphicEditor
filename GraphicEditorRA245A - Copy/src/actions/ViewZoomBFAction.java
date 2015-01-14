@@ -5,15 +5,14 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.KeyStroke;
 
-import app.MainFrame;
 import workspace.view.DiagramView;
+import app.MainFrame;
 
 public class ViewZoomBFAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5300753184412687332L;
 
 	public ViewZoomBFAction() {
 
@@ -27,7 +26,8 @@ public class ViewZoomBFAction extends AbstractGEDAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		((DiagramView)MainFrame.getInstance().getDesktop().getSelectedFrame()).bestFitZoom();
+		((DiagramView) MainFrame.getInstance().getDesktop().getSelectedFrame())
+				.bestFitZoom();
 
 	}
 

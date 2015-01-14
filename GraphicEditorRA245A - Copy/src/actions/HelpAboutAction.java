@@ -9,11 +9,10 @@ import app.MainFrame;
 import dialogs.About;
 
 public class HelpAboutAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 3200484612037908122L;
 
 	public HelpAboutAction() {
 

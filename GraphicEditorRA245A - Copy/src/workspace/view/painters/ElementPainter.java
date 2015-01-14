@@ -12,7 +12,7 @@ public abstract class ElementPainter implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1330734235854632113L;
-	
+
 	protected Shape shape;
 	/**
 	 * Referenca na Element objekat kome painter pripada.

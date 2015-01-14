@@ -2,11 +2,10 @@ package actions;
 
 import java.awt.event.ActionEvent;
 
-import app.MainFrame;
 import workspace.view.DiagramView;
+import app.MainFrame;
 
 public class ToolsTriangleAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */
@@ -23,7 +22,8 @@ public class ToolsTriangleAction extends AbstractGEDAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		((DiagramView)MainFrame.getInstance().getDesktop().getSelectedFrame()).startTriangleState();
+		((DiagramView) MainFrame.getInstance().getDesktop().getSelectedFrame())
+				.startTriangleState();
 	}
 
 }

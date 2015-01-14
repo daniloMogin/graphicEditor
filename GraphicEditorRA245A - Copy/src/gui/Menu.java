@@ -9,7 +9,6 @@ import javax.swing.JMenuBar;
 import app.MainFrame;
 
 public class Menu extends JMenuBar {
-
 	/**
 	 * 
 	 */
@@ -46,7 +45,7 @@ public class Menu extends JMenuBar {
 
 		JMenu editMenu = new JMenu("Edit");
 		editMenu.setMnemonic(KeyEvent.VK_E);
-		
+
 		editMenu.add(MainFrame.getInstance().getActionManager().getUndoAction());
 		editMenu.add(MainFrame.getInstance().getActionManager().getUndoAction());
 		editMenu.addSeparator();

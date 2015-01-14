@@ -9,14 +9,13 @@ import javax.swing.KeyStroke;
 import app.MainFrame;
 
 public class WindowCasAction extends AbstractGEDAction {
-
-	private static int clutter;
-	private static int count;
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 8553395903023628540L;
+	
+	private static int clutter;
+	private static int count;
 
 	public WindowCasAction() {
 

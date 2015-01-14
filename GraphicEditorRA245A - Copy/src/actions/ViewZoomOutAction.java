@@ -5,15 +5,14 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.KeyStroke;
 
-import app.MainFrame;
 import workspace.view.DiagramView;
+import app.MainFrame;
 
 public class ViewZoomOutAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 3733357922865958541L;
 
 	public ViewZoomOutAction() {
 
@@ -27,7 +26,8 @@ public class ViewZoomOutAction extends AbstractGEDAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		((DiagramView)(MainFrame.getInstance().getDesktop().getSelectedFrame())).zoomOut();
+		((DiagramView) (MainFrame.getInstance().getDesktop().getSelectedFrame()))
+				.zoomOut();
 
 	}
 

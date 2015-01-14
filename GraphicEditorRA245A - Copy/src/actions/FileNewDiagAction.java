@@ -7,17 +7,16 @@ import java.beans.PropertyVetoException;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 
-import app.MainFrame;
 import workspace.Diagram;
 import workspace.Project;
 import workspace.view.DiagramView;
+import app.MainFrame;
 
 public class FileNewDiagAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2740971370605865647L;
 
 	public FileNewDiagAction() {
 
@@ -36,7 +35,7 @@ public class FileNewDiagAction extends AbstractGEDAction {
 				.getLastSelectedPathComponent();
 
 		if (p instanceof Project) {
-			Diagram d = new Diagram((Project)p,"New diagram");
+			Diagram d = new Diagram((Project) p, "New diagram");
 			((Project) p).addDiagram(d);
 			SwingUtilities.updateComponentTreeUI(MainFrame.getInstance()
 					.getWorkspaceTree());

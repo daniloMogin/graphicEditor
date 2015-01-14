@@ -6,17 +6,16 @@ import java.util.Iterator;
 
 import javax.swing.KeyStroke;
 
-import app.MainFrame;
 import models.elements.DiagramDevice;
 import models.elements.DiagramElement;
 import workspace.view.DiagramView;
+import app.MainFrame;
 
 public class EditRotateCCWAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 8844232992775782542L;
 
 	public EditRotateCCWAction() {
 

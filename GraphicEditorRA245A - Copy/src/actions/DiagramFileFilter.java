@@ -13,8 +13,7 @@ public class DiagramFileFilter extends FileFilter {
 
 	@Override
 	public boolean accept(File f) {
-		return (f.isDirectory() || 
-                f.getName().toLowerCase().endsWith(".gpf"));
+		return (f.isDirectory() || f.getName().toLowerCase().endsWith(".gpf"));
 	}
 
 }

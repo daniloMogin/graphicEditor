@@ -11,7 +11,7 @@ public class StarState extends State {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -6342198922358382913L;
 
 	private DiagramView med;
 

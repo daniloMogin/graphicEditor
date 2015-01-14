@@ -5,15 +5,14 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.KeyStroke;
 
-import app.MainFrame;
 import workspace.view.DiagramView;
+import app.MainFrame;
 
 public class ViewZoomInAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 282385124935169684L;
 
 	public ViewZoomInAction() {
 
@@ -27,7 +26,8 @@ public class ViewZoomInAction extends AbstractGEDAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		((DiagramView)(MainFrame.getInstance().getDesktop().getSelectedFrame())).zoomIn();
+		((DiagramView) (MainFrame.getInstance().getDesktop().getSelectedFrame()))
+				.zoomIn();
 
 	}
 

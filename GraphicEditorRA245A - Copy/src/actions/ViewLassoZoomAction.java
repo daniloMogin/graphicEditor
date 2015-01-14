@@ -6,11 +6,10 @@ import java.awt.event.KeyEvent;
 import javax.swing.KeyStroke;
 
 public class ViewLassoZoomAction extends AbstractGEDAction {
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 7615675518633670615L;
 
 	public ViewLassoZoomAction() {
 
