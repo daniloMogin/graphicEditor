@@ -24,7 +24,7 @@ public class TriangleElement extends DiagramDevice {
 
 	public TriangleElement(TriangleElement triangle) {
 		super(triangle);
-		setName("triangle");
+		setName("Kopija");
 		elementPainter = new TrianglePainter(this);
 	}
 
@@ -37,7 +37,7 @@ public class TriangleElement extends DiagramDevice {
 				new Dimension(40, 40), new BasicStroke((float) (2),
 						BasicStroke.CAP_SQUARE, BasicStroke.JOIN_ROUND), fill,
 				Color.BLACK);
-		triangleElement.setName("Triangle: " + eleNum);
+		triangleElement.setName("Triangle:" + eleNum);
 
 		return triangleElement;
 	}

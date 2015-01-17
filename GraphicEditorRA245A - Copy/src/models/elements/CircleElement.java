@@ -25,7 +25,7 @@ public class CircleElement extends DiagramDevice {
 
 	public CircleElement(CircleElement circle) {
 		super(circle);
-		setName("kopija");
+		setName("Kopija");
 		elementPainter = new CirclePainter(this);
 	}
 
@@ -37,7 +37,7 @@ public class CircleElement extends DiagramDevice {
 				new Dimension(80, 40), new BasicStroke((float) (2),
 						BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL), fill,
 				Color.BLACK);
-		circEl.setName("Circle " + elemNo);
+		circEl.setName("Circle:" + elemNo);
 		return circEl;
 	}
 

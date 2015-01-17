@@ -24,7 +24,7 @@ public class StarElement extends DiagramDevice {
 
 	public StarElement(StarElement star) {
 		super(star);
-		setName("star");
+		setName("Kopija");
 		elementPainter = new StarPainter(this);
 	}
 
@@ -37,7 +37,7 @@ public class StarElement extends DiagramDevice {
 				40), new BasicStroke((float) (2), BasicStroke.CAP_ROUND,
 				BasicStroke.JOIN_ROUND), fill, Color.BLACK);
 
-		starElement.setName("Star: " + eleNum);
+		starElement.setName("Star:" + eleNum);
 
 		return starElement;
 

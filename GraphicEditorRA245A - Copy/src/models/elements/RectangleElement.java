@@ -23,7 +23,7 @@ public class RectangleElement extends DiagramDevice {
 
 	public RectangleElement(RectangleElement rectangle) {
 		super(rectangle);
-		setName("rectangle");
+		setName("Kopija");
 		elementPainter = new RectanglePainter(this);
 	}
 
@@ -36,7 +36,7 @@ public class RectangleElement extends DiagramDevice {
 				new Dimension(80, 40), new BasicStroke((float) (2),
 						BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL), fill,
 				Color.BLACK);
-		rectangleElement.setName("Rectangle " + eleNum);
+		rectangleElement.setName("Rectangle:" + eleNum);
 		return rectangleElement;
 	}
 

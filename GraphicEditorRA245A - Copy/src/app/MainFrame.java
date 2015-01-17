@@ -26,6 +26,7 @@ import windowListener.MyWindowListener;
 import workspace.WorkspaceModel;
 import workspace.view.DiagramView;
 import actions.ActionManager;
+import dialogs.ElementChangeDialog;
 
 public class MainFrame extends JFrame implements ClipboardOwner {
 	/**
@@ -44,6 +45,7 @@ public class MainFrame extends JFrame implements ClipboardOwner {
 
 	private ToolsTBar toolsTBar;
 	private ArrayList<DiagramView> diagramView = new ArrayList<DiagramView>();
+	private ArrayList<ElementChangeDialog> dialogs = new ArrayList<ElementChangeDialog>();
 
 	private Clipboard clipboard = new Clipboard("GrafEditor clipboard");
 
@@ -168,4 +170,18 @@ public class MainFrame extends JFrame implements ClipboardOwner {
 		return clipboard;
 	}
 
+	public ArrayList<ElementChangeDialog> getDialogs() {
+		return dialogs;
+	}
+
+	public void setDialogs(ArrayList<ElementChangeDialog> dialogs) {
+		this.dialogs = dialogs;
+	}
+
+	public void addDialog(ElementChangeDialog dialog) {
+		getDialogs().add(dialog);
+	}
+	public void removeDialog(ElementChangeDialog dialog) {
+		getDialogs().remove(dialog);
+	}
 }

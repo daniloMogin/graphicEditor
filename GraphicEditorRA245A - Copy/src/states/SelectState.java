@@ -8,6 +8,7 @@ import models.elements.DiagramElement;
 import workspace.view.DiagramView;
 import workspace.view.DiagramView.Handle;
 import app.MainFrame;
+import dialogs.ElementChangeDialog;
 
 public class SelectState extends State {
 	/**
@@ -68,6 +69,15 @@ public class SelectState extends State {
 			}
 
 		}
+		if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 2
+				&& !e.isControlDown()) {
+			if (med.getDiagram().getSelectionModel().getSelectionList().size() == 1) {
+				ElementChangeDialog ed = new ElementChangeDialog(
+						MainFrame.getInstance(), null, med.getDiagram()
+								.getSelectionModel().getSelectionList().get(0));
+				ed.setVisible(true);
+			}
+		}
 
 	}
 
@@ -107,4 +117,5 @@ public class SelectState extends State {
 		}
 
 	}
+
 }

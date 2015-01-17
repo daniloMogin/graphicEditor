@@ -14,8 +14,8 @@ public class StatusBar extends JPanel {
 	 */
 	private static final long serialVersionUID = 1696597433259221588L;
 
-	private StatusPane status = new StatusPane("State");
-	private StatusPane elementType = new StatusPane("Element type");
+	private StatusPane status = new StatusPane("  Welcome!");
+	private StatusPane elementType = new StatusPane("GraphicEditor is ready!");
 	private StatusPane elementName = new StatusPane("Element name");
 	private StatusPane position = new StatusPane("Position");
 	private StatusPane dimension = new StatusPane("Dimension");
@@ -43,6 +43,8 @@ public class StatusBar extends JPanel {
 			setHorizontalAlignment(CENTER);
 			setText(text);
 		}
+
+	
 	}
 
 	public void setStatus(String status) {
@@ -64,4 +66,25 @@ public class StatusBar extends JPanel {
 	public void setDimension(String dimension) {
 		this.dimension.setText(dimension);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

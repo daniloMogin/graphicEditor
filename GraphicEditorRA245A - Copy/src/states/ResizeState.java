@@ -33,6 +33,7 @@ public class ResizeState extends State {
 
 		Point2D position = e.getPoint();
 		med.transformToUserSpace(position);
+
 		if (handleInMotion == null) {
 			handleInMotion = med.getDeviceAndHandleForPoint(position);
 		}

@@ -21,4 +21,7 @@ public class State implements Serializable {
 	public void mouseMoved(MouseEvent e) {
 	}
 
+	public void mouseClicked(MouseEvent e) {
+	}
+
 }

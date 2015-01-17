@@ -78,6 +78,18 @@ public abstract class DiagramElement implements Serializable {
 		return stroke;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setStroke(SerializableStrokeAdapter stroke) {
+		this.stroke = stroke;
+	}
+
 	public void setStroke(Stroke stroke) {
 		this.stroke = new SerializableStrokeAdapter(stroke);
 	}

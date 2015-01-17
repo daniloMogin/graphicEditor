@@ -6,6 +6,7 @@ import java.beans.PropertyVetoException;
 
 import javax.swing.KeyStroke;
 
+import workspace.view.DiagramView;
 import app.MainFrame;
 
 public class WindowNextAction extends AbstractGEDAction {
@@ -13,9 +14,6 @@ public class WindowNextAction extends AbstractGEDAction {
 	 * 
 	 */
 	private static final long serialVersionUID = -332796244934354280L;
-
-	private int current;
-	private int next;
 
 	public WindowNextAction() {
 
@@ -34,39 +32,30 @@ public class WindowNextAction extends AbstractGEDAction {
 
 	}
 
+	@SuppressWarnings("unused")
 	public void nextWindow() {
-		current = MainFrame
-				.getInstance()
-				.getDiagramView()
-				.indexOf(
-						MainFrame.getInstance().getDesktop().getSelectedFrame());
+		if (MainFrame.getInstance().getDesktop().getAllFrames().length != 0) {
+			DiagramView dv = (DiagramView) MainFrame.getInstance().getDesktop()
+					.selectFrame(false);
+			System.out.print(dv);
+			if (!dv.isVisible()) {
+				try {
+					dv.setVisible(true);
+					dv.setSelected(true);
+				} catch (PropertyVetoException e) {
+					e.printStackTrace();
+				}
+				dv.setVisible(false);
+			}
 
-		if (MainFrame.getInstance().getDesktop().getSelectedFrame() == null)
-			return;
-
-		if (current == MainFrame.getInstance().getDiagramView().size() - 1)
-			next = 0;
-		else
-			next = current + 1;
-
-		while (!MainFrame.getInstance().getDiagramView().get(next).isVisible()
-				&& next <= MainFrame.getInstance().getDiagramView().size() - 1)
-			next++;
-
-		if (next == MainFrame.getInstance().getDiagramView().size()) {
-			next = 0;
-
-			while (!MainFrame.getInstance().getDiagramView().get(next)
-					.isVisible())
-				next++;
-		}
-
-		try {
-			MainFrame.getInstance().getDiagramView().get(next)
-					.setSelected(true);
-		} catch (PropertyVetoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			if (dv == null) {
+				return;
+			}
+			try {
+				dv.setSelected(true);
+			} catch (PropertyVetoException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
