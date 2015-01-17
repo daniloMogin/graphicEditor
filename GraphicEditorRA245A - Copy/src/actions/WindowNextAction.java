@@ -37,7 +37,6 @@ public class WindowNextAction extends AbstractGEDAction {
 		if (MainFrame.getInstance().getDesktop().getAllFrames().length != 0) {
 			DiagramView dv = (DiagramView) MainFrame.getInstance().getDesktop()
 					.selectFrame(false);
-			System.out.print(dv);
 			if (!dv.isVisible()) {
 				try {
 					dv.setVisible(true);

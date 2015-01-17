@@ -326,6 +326,20 @@ public class DiagramView extends JInternalFrame implements
 		transformation.translate(translateX, translateY);
 
 	}
+	
+	public DiagramDevice getHandlesElement(Point2D point){
+		DiagramElement element;
+		Handle handle = null;
+		
+		Iterator<DiagramElement> it = diagram.getSelectionModel().getSelectionListIterator();
+		while(it.hasNext()){
+			element = it.next();
+			handle = getHandleForPoint(element, point);
+			if (handle != null)
+				return (DiagramDevice) element;
+		}
+		return null;
+	}
 
 	private class Framework extends JPanel {
 		/**
