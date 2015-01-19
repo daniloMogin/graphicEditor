@@ -2,14 +2,15 @@ package actions;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.util.Iterator;
 
 import javax.swing.KeyStroke;
 
+import models.DiagramSelectionModel;
 import models.elements.DiagramDevice;
-import models.elements.DiagramElement;
 import workspace.view.DiagramView;
 import app.MainFrame;
+
+import commands.RotateCommand;
 
 public class EditRotateCWAction extends AbstractGEDAction {
 	/**
@@ -29,17 +30,23 @@ public class EditRotateCWAction extends AbstractGEDAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Iterator<DiagramElement> it = ((DiagramView) (MainFrame.getInstance()
-				.getDesktop().getSelectedFrame())).getDiagram()
-				.getSelectionModel().getSelectionListIterator();
-		while (it.hasNext()) {
+		if (MainFrame.getActiveDiagram() == null)
+			return;
 
-			DiagramElement element = it.next();
-			if (element instanceof DiagramDevice) {
-				DiagramDevice device = (DiagramDevice) element;
-				device.setRotation(device.getRotation() + Math.PI / 2);
-			}
-		}
+		DiagramSelectionModel selectionModel = MainFrame.getActiveDiagram()
+				.getDiagram().getSelectionModel();
+
+		if (!(selectionModel.getSelectionList().size() != 1))
+			if (selectionModel.getSelectionList().get(0) instanceof DiagramDevice)
+				MainFrame
+						.getActiveDiagram()
+						.getCommandManager()
+						.addCommand(
+								new RotateCommand(MainFrame.getActiveDiagram(),
+										(DiagramDevice) selectionModel
+												.getSelectionList().get(0),
+										+Math.PI / 2));
+
 		((DiagramView) (MainFrame.getInstance().getDesktop().getSelectedFrame()))
 				.updatePerformed(null);
 

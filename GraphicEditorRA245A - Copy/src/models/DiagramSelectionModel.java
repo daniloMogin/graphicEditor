@@ -1,6 +1,7 @@
 package models;
 
 import java.awt.geom.Rectangle2D;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -12,7 +13,8 @@ import models.elements.DiagramElement;
 import events.UpdateEvent;
 import events.UpdateListener;
 
-public class DiagramSelectionModel extends DefaultSingleSelectionModel {
+public class DiagramSelectionModel extends DefaultSingleSelectionModel
+		implements Serializable {
 	/**
 	 * 
 	 */
@@ -24,7 +26,7 @@ public class DiagramSelectionModel extends DefaultSingleSelectionModel {
 	private ArrayList<DiagramElement> selectionList = new ArrayList<DiagramElement>();
 
 	transient EventListenerList listenerList = new EventListenerList();
-	transient UpdateEvent updateEvent = null;
+	UpdateEvent updateEvent = null;
 
 	/**
 	 * Metoda dodaje element u listu selekcije.

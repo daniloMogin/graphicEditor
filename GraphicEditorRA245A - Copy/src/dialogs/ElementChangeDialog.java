@@ -25,168 +25,146 @@ public class ElementChangeDialog extends JDialog {
 
 	private static final long serialVersionUID = 6853271078013771392L;
 
-	
+	public ElementChangeDialog(final Frame owner, JDialog window,
+			final DiagramElement element) {
+		super();
 
-		// KONSTRUKTOR
-		public ElementChangeDialog(final Frame owner, JDialog window,
-				final DiagramElement element) {
-			super();
+		setSize(250, 300);
+		setResizable(false);
+		setLocationRelativeTo(owner);
+		setLayout(new BorderLayout());
+		setTitle(element.getClass().getName().replace("models.elements.", "")
+				.replace("Element", "")
+				+ " - " + element.getName());
 
-			setSize(250, 300);
-			setResizable(false);
-			setLocationRelativeTo(owner);
-			// setLayout(new GridBagLayout());
-			setLayout(new BorderLayout());
-			// naziv dialoga
-			setTitle(element.getClass().getName().replace("models.elements.", "")
-					.replace("Element", "")
-					+ " - " + element.getName());
+		// kreiram PANEL u koju cu da stavljam sve componente
+		JPanel mainPanel = new JPanel();
+		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+		mainPanel.setBackground(Color.LIGHT_GRAY);
 
+		// kreiram PANEL za Name
+		JPanel panelName = new JPanel();
+		panelName.setPreferredSize(new Dimension(250, 42));
+		panelName.setBackground(Color.LIGHT_GRAY);
 
-			// -----------------------------------------------------------------
-			// kreiram PANEL u koju cu da stavljam sve componente
-			JPanel glavniPanel = new JPanel();
-			glavniPanel.setLayout(new BoxLayout(glavniPanel, BoxLayout.Y_AXIS));
-			glavniPanel.setBackground(Color.LIGHT_GRAY);
-			// -----------------------------------------------------------------
+		JLabel nameLabel = new JLabel("Name");
+		nameLabel.setPreferredSize(new Dimension(230, 15));
 
-			// -----------------------------------------------------------------
-			// kreiram PANEL za Name
-			JPanel panelName = new JPanel();
-			panelName.setPreferredSize(new Dimension(250, 42));
-			panelName.setBackground(Color.LIGHT_GRAY);
+		final JTextField nameTextField = new JTextField();
+		nameTextField.setText(element.getName());
+		nameTextField.setBorder(new LineBorder(Color.BLACK, 2));
+		nameTextField.setPreferredSize(new Dimension(230, 25));
 
-			JLabel nameLabel = new JLabel("Name");
-			nameLabel.setPreferredSize(new Dimension(230, 15));
+		panelName.add(nameLabel);
+		panelName.add(nameTextField);
+		mainPanel.add(panelName);
 
-			final JTextField nameTextField = new JTextField();
-			nameTextField.setText(element.getName());
-			nameTextField.setBorder(new LineBorder(Color.BLACK, 2));
-			nameTextField.setPreferredSize(new Dimension(230, 25));
+		// kreiram PANEL za Description
+		JPanel panelDesc = new JPanel();
+		panelDesc.setPreferredSize(new Dimension(250, 67));
+		panelDesc.setBackground(Color.LIGHT_GRAY);
 
-			panelName.add(nameLabel);
-			panelName.add(nameTextField);
-			glavniPanel.add(panelName);
-			// -----------------------------------------------------------------
+		JLabel descLabel = new JLabel("Description");
+		descLabel.setPreferredSize(new Dimension(230, 15));
 
-			// -----------------------------------------------------------------
-			// kreiram PANEL za Description
-			JPanel panelDesc = new JPanel();
-			panelDesc.setPreferredSize(new Dimension(250, 67));
-			panelDesc.setBackground(Color.LIGHT_GRAY);
+		final JTextArea descTextArea = new JTextArea();
+		descTextArea.setText(element.getDescription());
+		descTextArea.setBorder(new LineBorder(Color.BLACK, 2));
+		descTextArea.setPreferredSize(new Dimension(230, 50));
 
-			JLabel descLabel = new JLabel("Description");
-			descLabel.setPreferredSize(new Dimension(230, 15));
+		panelDesc.add(descLabel);
+		panelDesc.add(descTextArea);
+		mainPanel.add(panelDesc);
 
-			final JTextArea descTextArea = new JTextArea();
-			descTextArea.setText(element.getDescription());
-			descTextArea.setBorder(new LineBorder(Color.BLACK, 2));
-			descTextArea.setPreferredSize(new Dimension(230, 50));
+		// kreiram PANEL za Color
+		JPanel panelColor = new JPanel();
+		panelColor.setPreferredSize(new Dimension(250, 37));
+		panelColor.setLayout(new GridLayout(2, 2));
+		panelColor.setBackground(Color.LIGHT_GRAY);
 
-			panelDesc.add(descLabel);
-			panelDesc.add(descTextArea);
-			glavniPanel.add(panelDesc);
-			// -----------------------------------------------------------------
+		JLabel colorNameLabel = new JLabel("Current Color");
 
-			// -----------------------------------------------------------------
-			// kreiram PANEL za Color
-			JPanel panelColor = new JPanel();
-			panelColor.setPreferredSize(new Dimension(250, 37));
-			panelColor.setLayout(new GridLayout(2, 2));
-			panelColor.setBackground(Color.LIGHT_GRAY);
+		JLabel emptyLabel = new JLabel("");
 
-			JLabel colorNameLabel = new JLabel("Current Color");
-			// colorNameLabel.setPreferredSize(new Dimension(50, 15));
+		final JPanel paintPanel = new JPanel();
+		paintPanel.setBackground((Color) element.getPaint());
+		paintPanel.setBorder(new LineBorder(Color.BLACK, 2));
 
-			JLabel emptyLabel = new JLabel("");
-			// emptyLabel.setPreferredSize(new Dimension(50, 5));
+		@SuppressWarnings("unused")
+		JColorChooser colorChooser = new JColorChooser();
+		JButton changeButton = new JButton("Change Color");
+		changeButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				paintPanel.setBackground(JColorChooser.showDialog(
+						MainFrame.getInstance(), "Choose Background Color",
+						Color.WHITE));
+			}
+		});
 
-			final JPanel paintPanel = new JPanel();
-			// paintPanel.setPreferredSize(new Dimension(30, 15));
-			paintPanel.setBackground((Color) element.getPaint());
-			paintPanel.setBorder(new LineBorder(Color.BLACK, 2));
+		panelColor.add(colorNameLabel);
+		panelColor.add(emptyLabel);
+		panelColor.add(paintPanel);
+		panelColor.add(changeButton);
 
-			@SuppressWarnings("unused")
-			JColorChooser colorChooser = new JColorChooser();
-			JButton changeButton = new JButton("Change Color");
-			changeButton.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					paintPanel.setBackground(JColorChooser.showDialog(
-							MainFrame.getInstance(), "Choose Background Color",
-							Color.WHITE));
-				}
-			});
-			// changeButton.setPreferredSize(new Dimension(100, 15));
+		mainPanel.add(panelColor);
 
-			panelColor.add(colorNameLabel);
-			panelColor.add(emptyLabel);
-			panelColor.add(paintPanel);
-			panelColor.add(changeButton);
+		// kreiram PANEL za buttons
+		JPanel panelButtons = new JPanel();
+		panelButtons.setBackground(Color.LIGHT_GRAY);
+		panelButtons.setPreferredSize(new Dimension(250, 17));
 
-			glavniPanel.add(panelColor);
-			// -----------------------------------------------------------------
+		// ok apply cancel
+		JButton okButton = new JButton("OK");
+		okButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// okAction();
+				element.setName(nameTextField.getText());
+				element.setPaint(paintPanel.getBackground());
+				element.setDescription(descTextArea.getText());
 
-			// -----------------------------------------------------------------
-			// kreiram PANEL za buttons
-			JPanel panelButtons = new JPanel();
-			panelButtons.setBackground(Color.LIGHT_GRAY);
-			panelButtons.setPreferredSize(new Dimension(250, 17));
+				setTitle(element.getClass().getName()
+						.replace("models.elements.", "").replace("Element", "")
+						+ " - " + element.getName());
 
-			// ok apply cancel
-			JButton okButton = new JButton("OK");
-			okButton.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					// okAction();
-					element.setName(nameTextField.getText());
-					element.setPaint(paintPanel.getBackground());
-					element.setDescription(descTextArea.getText());
+				owner.repaint();
+				dispose();
+			}
+		});
+		panelButtons.add(okButton);
 
-					setTitle(element.getClass().getName().replace("models.elements.", "")
-							.replace("Element", "")
-							+ " - " + element.getName());				
-					
-					owner.repaint();
-					dispose();
-				}
-			});
-			panelButtons.add(okButton);
+		JButton applyButton = new JButton("Apply");
+		applyButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				element.setName(nameTextField.getText());
+				element.setPaint(paintPanel.getBackground());
+				element.setDescription(descTextArea.getText());
 
-			JButton applyButton = new JButton("Apply");
-			applyButton.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					// getMe().dispose();
-					element.setName(nameTextField.getText());
-					element.setPaint(paintPanel.getBackground());
-					element.setDescription(descTextArea.getText());
+				setTitle(element.getClass().getName()
+						.replace("models.elements.", "").replace("Element", "")
+						+ " - " + element.getName());
 
-					setTitle(element.getClass().getName().replace("models.elements.", "")
-							.replace("Element", "")
-							+ " - " + element.getName());				
-					
-					owner.repaint();
-				}
-			});
-			panelButtons.add(applyButton);
+				owner.repaint();
+			}
+		});
+		panelButtons.add(applyButton);
 
-			JButton cancelButton = new JButton("Cancel");
-			cancelButton.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					dispose();
-				}
-			});
-			panelButtons.add(cancelButton);
+		JButton cancelButton = new JButton("Cancel");
+		cancelButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
+		panelButtons.add(cancelButton);
 
-			glavniPanel.add(panelButtons);
-			// -----------------------------------------------------------------
+		mainPanel.add(panelButtons);
 
-			// -----------------------------------------------------------------
-			this.setBackground(Color.RED);
+		this.setBackground(Color.RED);
 
-			this.add(glavniPanel);
-		} // kraj konstruktora
+		this.add(mainPanel);
+	} // kraj konstruktora
 
 }

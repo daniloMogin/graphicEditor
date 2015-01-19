@@ -21,31 +21,29 @@ public class LassoState extends State {
 	}
 
 	public void mouseDragged(MouseEvent e) {
-		Point2D mousePos = e.getPoint();
-		med.transformToUserSpace(mousePos);
+		Point2D position = e.getPoint();
+		med.transformToUserSpace(position);
 
 		if (!e.isControlDown()) {
 
 			med.getDiagram().getSelectionModel().removeAllFromSelectionList();
 		}
 
-		double width = mousePos.getX() - med.getLastPosition().getX();
-		double height = mousePos.getY() - med.getLastPosition().getY();
+		double width = position.getX() - med.getLastPosition().getX();
+		double height = position.getY() - med.getLastPosition().getY();
 		if ((width < 0) && (height < 0)) {
-			rect.setRect(mousePos.getX(), mousePos.getY(), Math.abs(width),
+			rect.setRect(position.getX(), position.getY(), Math.abs(width),
 					Math.abs(height));
 		} else if ((width < 0) && (height >= 0)) {
-			rect.setRect(mousePos.getX(), med.getLastPosition().getY(),
+			rect.setRect(position.getX(), med.getLastPosition().getY(),
 					Math.abs(width), Math.abs(height));
 		} else if ((width > 0) && (height < 0)) {
-			rect.setRect(med.getLastPosition().getX(), mousePos.getY(),
+			rect.setRect(med.getLastPosition().getX(), position.getY(),
 					Math.abs(width), Math.abs(height));
 		} else {
 			rect.setRect(med.getLastPosition().getX(), med.getLastPosition()
 					.getY(), Math.abs(width), Math.abs(height));
 		}
-		med.setSelectionRectangle(rect);
-
 		med.getDiagram()
 				.getSelectionModel()
 				.selectElements(rect,

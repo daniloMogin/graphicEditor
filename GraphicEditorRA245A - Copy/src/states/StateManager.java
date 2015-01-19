@@ -17,9 +17,9 @@ public class StateManager implements Serializable {
 	private RectangleState rectangleState;
 	private TriangleState triangleState;
 	private StarState starState;
-	private LassoState lassoState;
 	private ResizeState resizeState;
 	private MoveState moveState;
+	private LassoState lassoState;
 
 	public StateManager(DiagramView med) {
 
@@ -28,9 +28,9 @@ public class StateManager implements Serializable {
 		rectangleState = new RectangleState(med);
 		triangleState = new TriangleState(med);
 		starState = new StarState(med);
-		lassoState = new LassoState(med);
 		resizeState = new ResizeState(med);
 		moveState = new MoveState(med);
+		lassoState = new LassoState(med);
 
 		currentState = selectState;
 	}
@@ -55,16 +55,16 @@ public class StateManager implements Serializable {
 		currentState = starState;
 	}
 
-	public void setLassoState() {
-		currentState = lassoState;
-	}
-
 	public void setResizeState() {
 		currentState = resizeState;
 	}
 
 	public void setMoveState() {
 		currentState = moveState;
+	}
+
+	public void setLassoState() {
+		currentState = lassoState;
 	}
 
 	public State getCurrentState() {

@@ -26,6 +26,9 @@ import windowListener.MyWindowListener;
 import workspace.WorkspaceModel;
 import workspace.view.DiagramView;
 import actions.ActionManager;
+
+import commands.CommandManager;
+
 import dialogs.ElementChangeDialog;
 
 public class MainFrame extends JFrame implements ClipboardOwner {
@@ -42,6 +45,7 @@ public class MainFrame extends JFrame implements ClipboardOwner {
 	private JDesktopPane desktop;
 	private WorkspaceTree workspaceTree;
 	private WorkspaceModel workspaceModel;
+	private CommandManager commandManager;
 
 	private ToolsTBar toolsTBar;
 	private ArrayList<DiagramView> diagramView = new ArrayList<DiagramView>();
@@ -166,6 +170,18 @@ public class MainFrame extends JFrame implements ClipboardOwner {
 
 	}
 
+	public static DiagramView getActiveDiagram() {
+		DiagramView activeScreen = null;
+
+		if (MainFrame.getInstance().getDesktop().getAllFrames().length != 0)
+			if (((DiagramView) MainFrame.getInstance().getDesktop()
+					.getSelectedFrame()) != null)
+				activeScreen = ((DiagramView) MainFrame.getInstance()
+						.getDesktop().getSelectedFrame());
+
+		return activeScreen;
+	}
+
 	public Clipboard getClipboard() {
 		return clipboard;
 	}
@@ -181,7 +197,12 @@ public class MainFrame extends JFrame implements ClipboardOwner {
 	public void addDialog(ElementChangeDialog dialog) {
 		getDialogs().add(dialog);
 	}
+
 	public void removeDialog(ElementChangeDialog dialog) {
 		getDialogs().remove(dialog);
+	}
+
+	public CommandManager getCommandManager() {
+		return commandManager;
 	}
 }

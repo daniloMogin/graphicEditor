@@ -94,38 +94,48 @@ public class DiagramView extends JInternalFrame implements
 	// ----------------------------------------------
 	public void startSelectState() {
 		stateManager.setSelectState();
+		MainFrame.getInstance().getStatusBar().setStatus("Select State");
 	}
 
 	public void startCircleState() {
 		diagram.getSelectionModel().removeAllFromSelectionList();
 		stateManager.setCircleState();
+		MainFrame.getInstance().getStatusBar().setStatus("Add Circle Element");
 	}
 
 	public void startRectangleState() {
 		diagram.getSelectionModel().removeAllFromSelectionList();
 		stateManager.setRectangleState();
+		MainFrame.getInstance().getStatusBar()
+				.setStatus("Add Rectangle Element");
 	}
 
 	public void startTriangleState() {
 		diagram.getSelectionModel().removeAllFromSelectionList();
 		stateManager.setTriangleState();
+		MainFrame.getInstance().getStatusBar()
+				.setStatus("Add Triangle Element");
 	}
 
 	public void startStarState() {
 		diagram.getSelectionModel().removeAllFromSelectionList();
 		stateManager.setStarState();
-	}
-
-	public void startLassoState() {
-		stateManager.setLassoState();
+		MainFrame.getInstance().getStatusBar().setStatus("Add Star Element");
 	}
 
 	public void startResizeState() {
 		stateManager.setResizeState();
+		MainFrame.getInstance().getStatusBar().setStatus("Resize State");
 	}
 
 	public void startMoveState() {
 		stateManager.setMoveState();
+		MainFrame.getInstance().getStatusBar().setStatus("Move State");
+	}
+
+	public void startLassoState() {
+		stateManager.setLassoState();
+		MainFrame.getInstance().getStatusBar().setStatus("Lasso State");
 	}
 
 	public StateManager getStateManager() {
@@ -326,13 +336,14 @@ public class DiagramView extends JInternalFrame implements
 		transformation.translate(translateX, translateY);
 
 	}
-	
-	public DiagramDevice getHandlesElement(Point2D point){
+
+	public DiagramDevice getHandlesElement(Point2D point) {
 		DiagramElement element;
 		Handle handle = null;
-		
-		Iterator<DiagramElement> it = diagram.getSelectionModel().getSelectionListIterator();
-		while(it.hasNext()){
+
+		Iterator<DiagramElement> it = diagram.getSelectionModel()
+				.getSelectionListIterator();
+		while (it.hasNext()) {
 			element = it.next();
 			handle = getHandleForPoint(element, point);
 			if (handle != null)
@@ -485,7 +496,6 @@ public class DiagramView extends JInternalFrame implements
 			case West:
 				cursor = Cursor.getPredefinedCursor(Cursor.W_RESIZE_CURSOR);
 				break;
-
 			case SouthEast:
 				cursor = Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR);
 				break;
@@ -703,15 +713,10 @@ public class DiagramView extends JInternalFrame implements
 			if (hScrollValue < e.getValue()) {
 				translateX += (double) ((e.getValue() - hScrollValue) * (-translateFactor))
 						/ transformation.getScaleX();
-				// transformation.translate((double)((e.getValue()-hScrollValue)*(-translateFactor))/transformation.getScaleX(),
-				// 0);
 
 			} else {
 				translateX += (double) ((e.getValue() - hScrollValue) * (-translateFactor))
 						/ transformation.getScaleX();
-				// translateX+=(double)((hScrollValue-e.getValue())*(-translateFactor))/transformation.getScaleX();
-				// transformation.translate((double)((hScrollValue-e.getValue())*(translateFactor))/transformation.getScaleX(),
-				// 0);
 			}
 			hScrollValue = e.getValue();
 
@@ -719,12 +724,9 @@ public class DiagramView extends JInternalFrame implements
 			if (vScrollValue < e.getValue()) {
 				translateY += (double) ((e.getValue() - vScrollValue) * (-translateFactor))
 						/ transformation.getScaleX();
-				// transformation.translate(0,(double)((e.getValue()-vScrollValue)*(-translateFactor))/transformation.getScaleX());
 			} else {
 				translateY += (double) ((e.getValue() - vScrollValue) * (-translateFactor))
 						/ transformation.getScaleX();
-				// translateY+=(double)((vScrollValue-e.getValue())*(-translateFactor))/transformation.getScaleX();
-				// transformation.translate(0,(double)((vScrollValue-e.getValue())*(translateFactor))/transformation.getScaleX());
 			}
 			vScrollValue = e.getValue();
 		}

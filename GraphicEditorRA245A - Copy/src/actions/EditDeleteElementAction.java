@@ -45,19 +45,7 @@ public class EditDeleteElementAction extends AbstractGEDAction {
 
 			}
 			view.getDiagram().getSelectionModel().removeAllFromSelectionList();
-			// mana brisanja je ta sto ukoliko postoji link vezan za element i
-			// obrise se element
-			// link se ne brise!!!
-			// dve opcije
-			// 1. prolaziti kroz sve ulaze i izlaze elementa i za svaki od
-			// njih proci kroz sve linkovi i videti da li je ulaz ili izlaz
-			// vezan za link
 
-			// 2.(bolje resenje) uvesti u klasu InputOutputElement referencu na
-			// link sa kojom je vezana
-			// pa prilikom brisanje elementa, proci kroz njegove ulaze i izlaze
-			// i
-			// obrisati vezane linkove
 		}
 	}
 

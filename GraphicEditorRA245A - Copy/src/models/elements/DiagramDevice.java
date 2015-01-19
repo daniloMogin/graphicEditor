@@ -70,6 +70,9 @@ public abstract class DiagramDevice extends DiagramElement {
 	}
 
 	public void setRotation(double rotation) {
+		if (Math.abs(rotation - 2 * Math.PI) < 0.01
+				|| Math.abs(rotation + 2 * Math.PI) < 0.01)
+			rotation = 0;
 		this.rotation = rotation;
 	}
 

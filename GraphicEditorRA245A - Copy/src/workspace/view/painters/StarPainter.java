@@ -13,7 +13,6 @@ public class StarPainter extends DevicePainter {
 
 	public StarPainter(DiagramElement device) {
 		super(device);
-		// TODO Auto-generated constructor stub
 		StarElement star = (StarElement) device;
 
 		shape = new GeneralPath();

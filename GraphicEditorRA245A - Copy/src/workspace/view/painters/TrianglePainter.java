@@ -13,7 +13,6 @@ public class TrianglePainter extends DevicePainter {
 
 	public TrianglePainter(DiagramElement device) {
 		super(device);
-		// TODO Auto-generated constructor stub
 		TriangleElement triangle = (TriangleElement) device;
 
 		shape = new GeneralPath();

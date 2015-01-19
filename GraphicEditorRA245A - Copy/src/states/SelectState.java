@@ -4,7 +4,11 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 
+import models.elements.CircleElement;
 import models.elements.DiagramElement;
+import models.elements.RectangleElement;
+import models.elements.StarElement;
+import models.elements.TriangleElement;
 import workspace.view.DiagramView;
 import workspace.view.DiagramView.Handle;
 import app.MainFrame;
@@ -29,10 +33,10 @@ public class SelectState extends State {
 	}
 
 	public void mousePressed(MouseEvent e) {
-
 		mouseButton = e.getButton();
 		Point position = e.getPoint();
 		med.transformToUserSpace(position);
+
 		if (e.getButton() == MouseEvent.BUTTON1) {
 			handleInMotion = med.getDeviceAndHandleForPoint(position);
 			if (handleInMotion == null) {
@@ -57,9 +61,68 @@ public class SelectState extends State {
 						med.getDiagram().getSelectionModel()
 								.addToSelectionList(element);
 					}
+					if (med.getDiagram().getSelectionModel()
+							.getSelectionListSize() == 1) {
+						MainFrame.getInstance().getStatusBar()
+								.setElementName(element.toString());
 
+						if (element instanceof RectangleElement) {
+							MainFrame.getInstance().getStatusBar()
+									.setElementType("Rectangle");
+							MainFrame
+									.getInstance()
+									.getStatusBar()
+									.setDimension(
+											((RectangleElement) element)
+													.getSize().height,
+											((RectangleElement) element)
+													.getSize().width);
+						} else if (element instanceof CircleElement) {
+							MainFrame.getInstance().getStatusBar()
+									.setElementType("Circle");
+							MainFrame
+									.getInstance()
+									.getStatusBar()
+									.setDimension(
+											((CircleElement) element).getSize().height,
+											((CircleElement) element).getSize().width);
+						} else if (element instanceof TriangleElement) {
+							MainFrame.getInstance().getStatusBar()
+									.setElementType("Triangle");
+							MainFrame
+									.getInstance()
+									.getStatusBar()
+									.setDimension(
+											((TriangleElement) element)
+													.getSize().height,
+											((TriangleElement) element)
+													.getSize().width);
+						} else if (element instanceof StarElement) {
+							MainFrame.getInstance().getStatusBar()
+									.setElementType("Star");
+							MainFrame
+									.getInstance()
+									.getStatusBar()
+									.setDimension(
+											((StarElement) element).getSize().height,
+											((StarElement) element).getSize().width);
+						}
+
+					} else {
+						// selektovano je vise elemenata
+						MainFrame.getInstance().getStatusBar()
+								.setElementName("");
+						MainFrame.getInstance().getStatusBar()
+								.setElementType("");
+						MainFrame.getInstance().getStatusBar()
+								.setDimension(-1, -1);
+
+					}
 				} else {
 					// nije pogodjen nijedan element
+					MainFrame.getInstance().getStatusBar().setElementType("");
+					MainFrame.getInstance().getStatusBar().setElementName("");
+					MainFrame.getInstance().getStatusBar().setDimension(-1, -1);
 
 				}
 			} else {
@@ -84,10 +147,12 @@ public class SelectState extends State {
 	public void mouseMoved(MouseEvent e) {
 		// Promena pokazivača miša u zavisnosti od toga iznad čega se nalazi
 		Point2D position = e.getPoint();
+		String posString = "Position [x = " + e.getPoint().x + ", y = "
+				+ e.getPoint().y + "]";
+
 		med.transformToUserSpace(position);
 		med.setMouseCursor(position);
-		MainFrame.getInstance().getStatusBar()
-				.setPosition(e.getPoint().toString());
+		MainFrame.getInstance().getStatusBar().setPosition(posString);
 	}
 
 	public void mouseDragged(MouseEvent e) {

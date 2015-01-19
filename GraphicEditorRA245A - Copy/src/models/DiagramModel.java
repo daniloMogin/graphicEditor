@@ -19,10 +19,10 @@ public class DiagramModel implements Serializable {
 
 	private String name;
 
-	protected ArrayList<DiagramElement> diagramElements = new ArrayList<DiagramElement>();
+	private ArrayList<DiagramElement> diagramElements = new ArrayList<DiagramElement>();
 
 	transient EventListenerList listenerList = new EventListenerList();
-	UpdateEvent updateEvent = null;
+	transient UpdateEvent updateEvent = null;
 
 	private Object readResolve() {
 		listenerList = new EventListenerList();
@@ -89,11 +89,11 @@ public class DiagramModel implements Serializable {
 	}
 
 	/**
-	 * Javljamo svim listenerima da se dogadjaj desio
+	 * Javljamo svim listenerima da se događaj desio
 	 */
 	public void fireUpdatePerformed() {
 		Object[] listeners = listenerList.getListenerList();
-		for (int i = listeners.length - 1; i >= 0; i -= 1) {
+		for (int i = listeners.length - 2; i >= 0; i -= 2) {
 			if (listeners[i] == UpdateListener.class) {
 				if (updateEvent == null)
 					updateEvent = new UpdateEvent(this);

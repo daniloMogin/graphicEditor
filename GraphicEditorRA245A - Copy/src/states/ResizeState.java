@@ -2,12 +2,15 @@ package states;
 
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import models.elements.DiagramDevice;
 import models.elements.DiagramElement;
 import workspace.view.DiagramView;
 import workspace.view.DiagramView.Handle;
+
+import commands.ResizeCommand;
 
 public class ResizeState extends State {
 	/**
@@ -25,6 +28,9 @@ public class ResizeState extends State {
 	double delta7Y = 0;
 
 	private boolean justStarted = true;
+	private ArrayList<Double> listOfScales = new ArrayList<Double>();
+	private ArrayList<Point2D> listOfPositions = new ArrayList<Point2D>();
+	private int iterator = 0;
 
 	DiagramDevice deviceForDifference;
 
@@ -67,6 +73,14 @@ public class ResizeState extends State {
 				DiagramElement element = it.next();
 				if (element instanceof DiagramDevice) {
 					DiagramDevice device = (DiagramDevice) element;
+
+					if (iterator <= med.getDiagram().getSelectionModel()
+							.getSelectionList().size() - 1) {
+						listOfScales.add(device.getScale());
+						listOfPositions.add(device.getPosition());
+						iterator++;
+					}
+
 					switch (handleInMotion.ordinal()) {
 					// southeast
 					case 4: {
@@ -92,6 +106,7 @@ public class ResizeState extends State {
 							device.setScale(newScale);
 						break;
 					}
+					// southwest
 					case 5: {
 						double deltaX = delta5X;
 						double deltaY = delta5Y;
@@ -120,6 +135,7 @@ public class ResizeState extends State {
 								.getPosition().getY()));
 						break;
 					}
+					// northeast
 					case 6: {
 						double deltaX = delta6X;
 						double deltaY = delta6Y;
@@ -138,8 +154,8 @@ public class ResizeState extends State {
 							newScale = scaleY;
 						if (newScale < 0.2)
 							device.setScale(0.2);
-						else if (newScale > 3)
-							device.setScale(3);
+						else if (newScale > 5)
+							device.setScale(5);
 						else
 							device.setScale(newScale);
 						double newY = device.getPosition().getY() + oldHeight
@@ -148,6 +164,7 @@ public class ResizeState extends State {
 								.getPosition().getX(), newY));
 						break;
 					}
+					// northwest
 					case 7: {
 						double deltaX = delta7X;
 						double deltaY = delta7Y;
@@ -187,6 +204,7 @@ public class ResizeState extends State {
 		}
 	}
 
+	// namestanje koordinata posle resize
 	private void setupDifference(Point2D position) {
 		if (deviceForDifference == null)
 			deviceForDifference = med.getHandlesElement(position);
@@ -251,6 +269,14 @@ public class ResizeState extends State {
 
 	public void mouseReleased(MouseEvent e) {
 		handleInMotion = null;
+		med.startSelectState();
+		ArrayList<DiagramElement> selectionList = med.getDiagram()
+				.getSelectionModel().getSelectionList();
+
+		iterator = 0;
+		med.getCommandManager().addCommand(
+				new ResizeCommand(med, selectionList, listOfScales,
+						listOfPositions));
 		med.startSelectState();
 		deviceForDifference = null;
 	}
