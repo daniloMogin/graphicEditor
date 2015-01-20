@@ -1,9 +1,2 @@
-/app
-/actions
-/commands
-/controllers
-/dialogs
-/gui
 /models
-/states
 /workspace

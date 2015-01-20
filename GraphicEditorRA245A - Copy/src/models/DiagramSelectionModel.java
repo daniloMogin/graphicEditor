@@ -27,6 +27,11 @@ public class DiagramSelectionModel extends DefaultSingleSelectionModel
 
 	transient EventListenerList listenerList = new EventListenerList();
 	UpdateEvent updateEvent = null;
+	
+	private Object readResolve() {
+		listenerList = new EventListenerList();
+		return this;
+	}
 
 	/**
 	 * Metoda dodaje element u listu selekcije.

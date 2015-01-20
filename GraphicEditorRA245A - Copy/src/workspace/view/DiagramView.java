@@ -66,8 +66,8 @@ public class DiagramView extends JInternalFrame implements
 	private JScrollBar sbHorizontal;
 
 	// inicijalna pozicija skrol bara, vazna kod pomeranja skrol bara
-	private int hScrollValue = 1490;
-	private int vScrollValue = 1490;
+	private int hScrollValue = 140;
+	private int vScrollValue = 140;
 
 	double translateX = 0;
 	double translateY = 0;
@@ -181,11 +181,11 @@ public class DiagramView extends JInternalFrame implements
 		getContentPane().add(framework, BorderLayout.CENTER);
 		framework.setBackground(new Color(127, 121, 96));
 
-		// postavljanje horiyontalnog i vertikalnog skrol bara
+		// postavljanje horizontalnog i vertikalnog skrol bara
 		sbHorizontal = new JScrollBar(JScrollBar.HORIZONTAL, hScrollValue, 20,
-				0, 3000);
+				0, 300);
 		sbVertical = new JScrollBar(JScrollBar.VERTICAL, vScrollValue, 20, 0,
-				3000);
+				300);
 
 		sbHorizontal.addAdjustmentListener(this);
 		sbVertical.addAdjustmentListener(this);
@@ -256,7 +256,7 @@ public class DiagramView extends JInternalFrame implements
 					}
 
 				}
-				// Zatim je potrebno da skaliranje održimo u intervalu [0.2, 5]
+				// Zatim je potrebno da skaliranje održimo u intervalu [0.1, 10]
 				if (newScaling < 0.1) {
 					newScaling = 0.1;
 
@@ -408,16 +408,28 @@ public class DiagramView extends JInternalFrame implements
 						BasicStroke.JOIN_BEVEL, 1f, new float[] { 3f, 6f }, 0));
 				g2.setPaint(Color.BLACK);
 
-				g2.drawRect((int) device.getPosition().getX(), (int) device
-						.getPosition().getY(), (int) device.getSize()
-						.getWidth(), (int) device.getSize().getHeight());
+				if (device.getRotation() == 0
+						|| device.getRotation() == Math.PI
+						|| device.getRotation() == -Math.PI)
+					g2.drawRect((int) device.getPosition().getX(), (int) device
+							.getPosition().getY(), (int) device.getSize()
+							.getWidth(), (int) device.getSize().getHeight());
+
+				else {
+					double delta = (device.getSize().getWidth() - device
+							.getSize().getHeight()) / 2;
+					g2.drawRect((int) (device.getPosition().getX() + delta),
+							(int) (device.getPosition().getY() - delta),
+							(int) (device.getSize().getHeight()),
+							(int) (device.getSize().getWidth()));
+				}
 
 				// Iscrtavanje hendlova
 				for (Handle e : Handle.values()) {
 					paintSelectionHandle(
 							g2,
 							getHandlePoint(device.getPosition(),
-									device.getSize(), e));
+									device.getSize(), e, device));
 				}
 			}
 		}
@@ -430,45 +442,89 @@ public class DiagramView extends JInternalFrame implements
 	}
 
 	private Point2D getHandlePoint(Point2D topLeft, Dimension2D size,
-			Handle handlePosition) {
+			Handle handlePosition, DiagramDevice device) {
 		double x = 0, y = 0;
+		
+		if (device.getRotation() == 0 || device.getRotation() == Math.PI
+				|| device.getRotation() == -Math.PI) {
+			// Određivanje y koordinate
 
-		// Doređivanje y koordinate
+			// Ako su gornji hendlovi
+			if (handlePosition == Handle.NorthWest
+					|| handlePosition == Handle.North
+					|| handlePosition == Handle.NorthEast) {
+				y = topLeft.getY();
+			}
+			// Ako su centralni po y osi
+			if (handlePosition == Handle.East || handlePosition == Handle.West) {
+				y = topLeft.getY() + size.getHeight() / 2;
+			}
+			// Ako su donji
+			if (handlePosition == Handle.SouthWest
+					|| handlePosition == Handle.South
+					|| handlePosition == Handle.SouthEast) {
+				y = topLeft.getY() + size.getHeight();
+			}
 
-		// Ako su gornji hendlovi
-		if (handlePosition == Handle.NorthWest
-				|| handlePosition == Handle.North
-				|| handlePosition == Handle.NorthEast) {
-			y = topLeft.getY();
-		}
-		// Ako su centralni po y osi
-		if (handlePosition == Handle.East || handlePosition == Handle.West) {
-			y = topLeft.getY() + size.getHeight() / 2;
-		}
-		// Ako su donji
-		if (handlePosition == Handle.SouthWest
-				|| handlePosition == Handle.South
-				|| handlePosition == Handle.SouthEast) {
-			y = topLeft.getY() + size.getHeight();
-		}
+			// Određivanje x koordinate
 
-		// Određivanje x koordinate
+			// Ako su levi
+			if (handlePosition == Handle.NorthWest
+					|| handlePosition == Handle.West
+					|| handlePosition == Handle.SouthWest) {
+				x = topLeft.getX();
+			}
+			// ako su centralni po x osi
+			if (handlePosition == Handle.North
+					|| handlePosition == Handle.South) {
+				x = topLeft.getX() + size.getWidth() / 2;
+			}
+			// ako su desni
+			if (handlePosition == Handle.NorthEast
+					|| handlePosition == Handle.East
+					|| handlePosition == Handle.SouthEast) {
+				x = topLeft.getX() + size.getWidth();
+			}
+		} else {
+			double delta = (device.getSize().getWidth() - device.getSize()
+					.getHeight()) / 2;
 
-		// Ako su levi
-		if (handlePosition == Handle.NorthWest || handlePosition == Handle.West
-				|| handlePosition == Handle.SouthWest) {
-			x = topLeft.getX();
-		}
-		// ako su centralni po x osi
-		if (handlePosition == Handle.North || handlePosition == Handle.South) {
-			x = topLeft.getX() + size.getWidth() / 2;
-		}
-		// ako su desni
-		if (handlePosition == Handle.NorthEast || handlePosition == Handle.East
-				|| handlePosition == Handle.SouthEast) {
-			x = topLeft.getX() + size.getWidth();
-		}
+			if (handlePosition == Handle.NorthWest
+					|| handlePosition == Handle.North
+					|| handlePosition == Handle.NorthEast) {
+				y = topLeft.getY() - delta;
+			}
 
+			if (handlePosition == Handle.East || handlePosition == Handle.West) {
+				y = topLeft.getY() + size.getWidth() / 2 - delta;
+			}
+
+			// Ako su donji
+			if (handlePosition == Handle.SouthWest
+					|| handlePosition == Handle.South
+					|| handlePosition == Handle.SouthEast) {
+				y = topLeft.getY() + size.getWidth() - delta;
+			}
+			
+			// Ako su levi
+			if (handlePosition == Handle.NorthWest
+					|| handlePosition == Handle.West
+					|| handlePosition == Handle.SouthWest) {
+				x = topLeft.getX() + delta;
+			}
+
+			if (handlePosition == Handle.North
+					|| handlePosition == Handle.South) {
+				x = topLeft.getX() + size.getHeight() / 2 + delta;
+			}
+
+			// ako su desni
+			if (handlePosition == Handle.NorthEast
+					|| handlePosition == Handle.East
+					|| handlePosition == Handle.SouthEast) {
+				x = topLeft.getX() + size.getHeight() + delta;
+			}
+		}
 		return new Point2D.Double(x, y);
 
 	}
@@ -563,7 +619,7 @@ public class DiagramView extends JInternalFrame implements
 		if (element instanceof DiagramDevice) {
 			DiagramDevice device = (DiagramDevice) element;
 			Point2D handleCenter = getHandlePoint(device.getPosition(),
-					device.getSize(), handle);
+					device.getSize(), handle, device);
 			return ((Math.abs(point.getX() - handleCenter.getX()) <= (double) handleSize / 2) && (Math
 					.abs(point.getY() - handleCenter.getY()) <= (double) handleSize / 2));
 		} else
@@ -730,9 +786,45 @@ public class DiagramView extends JInternalFrame implements
 			}
 			vScrollValue = e.getValue();
 		}
+		setvScrollValue(vScrollValue);
+		sethScrollValue(hScrollValue);
+		getSbVertical().setValue(vScrollValue);
+		getSbHorizontal().setValue(hScrollValue);
 		setupTransformation();
 		repaint();
 
+	}
+
+	public JScrollBar getSbVertical() {
+		return sbVertical;
+	}
+
+	public void setSbVertical(JScrollBar sbVertical) {
+		this.sbVertical = sbVertical;
+	}
+
+	public JScrollBar getSbHorizontal() {
+		return sbHorizontal;
+	}
+
+	public void setSbHorizontal(JScrollBar sbHorizontal) {
+		this.sbHorizontal = sbHorizontal;
+	}
+
+	public int gethScrollValue() {
+		return hScrollValue;
+	}
+
+	public void sethScrollValue(int hScrollValue) {
+		this.hScrollValue = hScrollValue;
+	}
+
+	public int getvScrollValue() {
+		return vScrollValue;
+	}
+
+	public void setvScrollValue(int vScrollValue) {
+		this.vScrollValue = vScrollValue;
 	}
 
 	@SuppressWarnings("unchecked")

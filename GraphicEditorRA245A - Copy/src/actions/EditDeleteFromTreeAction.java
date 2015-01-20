@@ -2,15 +2,14 @@ package actions;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.beans.PropertyVetoException;
 
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 
-import app.MainFrame;
 import workspace.Diagram;
 import workspace.Project;
 import workspace.Workspace;
+import app.MainFrame;
 
 public class EditDeleteFromTreeAction extends AbstractGEDAction {
 	/**
@@ -37,12 +36,15 @@ public class EditDeleteFromTreeAction extends AbstractGEDAction {
 	}
 
 	public void deleteAction() {
+		// WORKSPACENODE SELECTED
 		if (MainFrame.getInstance().getWorkspaceTree()
 				.getLastSelectedPathComponent() instanceof Workspace)
 			return;
 
+		// DIJAGRAMNODE SELECTED
 		if (MainFrame.getInstance().getWorkspaceTree()
 				.getLastSelectedPathComponent() instanceof Diagram) {
+
 			int pom = ((Workspace) MainFrame.getInstance().getWorkspaceModel()
 					.getRoot()).getProjects().indexOf(
 					((Diagram) MainFrame.getInstance().getWorkspaceTree()
@@ -64,40 +66,28 @@ public class EditDeleteFromTreeAction extends AbstractGEDAction {
 						.equals(((Diagram) MainFrame.getInstance()
 								.getWorkspaceTree()
 								.getLastSelectedPathComponent()).getName())) {
-					if (MainFrame.getInstance().getDiagramView().get(i)
-							.isSelected()) {
-						try {
-							MainFrame.getInstance().getDiagramView().get(i)
-									.setClosed(true);
-						} catch (PropertyVetoException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						MainFrame
-								.getInstance()
-								.getDiagramView()
-								.remove(MainFrame.getInstance()
-										.getDiagramView().get(i));
-					}
+					// if(MainFrame.getInstance().getDiagramFrame().get(i).isSelected()){
+					MainFrame.getInstance().getDiagramView().get(i).dispose();
+					MainFrame.getInstance().getDiagramView().remove(i);
 					break;
+					// }
 
 				}
-
 			}
-
 			SwingUtilities.updateComponentTreeUI(MainFrame.getInstance()
 					.getWorkspaceTree());
 			return;
 
 		}
 
+		// PROJECTNODE SELECTED
 		if (MainFrame.getInstance().getWorkspaceTree()
 				.getLastSelectedPathComponent() instanceof Project) {
+
 			int pom = ((Workspace) MainFrame.getInstance().getWorkspaceModel()
 					.getRoot()).getProjects().indexOf(
 					MainFrame.getInstance().getWorkspaceTree()
 							.getLastSelectedPathComponent());
-
 			Diagram pomDTN;
 			int pomIndex = -1;
 
@@ -112,9 +102,7 @@ public class EditDeleteFromTreeAction extends AbstractGEDAction {
 						.size(); j++) {
 					if (MainFrame.getInstance().getDiagramView().get(j)
 							.getName().equals(pomDTN.getName())) {
-						if (MainFrame.getInstance().getDiagramView().get(j)
-								.getName().equals(pomDTN.getName()))
-							pomIndex = j;
+						pomIndex = j;
 						break;
 					}
 				}
@@ -125,22 +113,10 @@ public class EditDeleteFromTreeAction extends AbstractGEDAction {
 				if (MainFrame.getInstance().getDiagramView().get(pomIndex)
 						.getName().equals(pomDTN.getName())) {
 					if (!MainFrame.getInstance().getDiagramView().get(pomIndex)
-							.isClosed()) {
-						try {
-							MainFrame.getInstance().getDiagramView()
-									.get(pomIndex).setClosed(true);
-						} catch (PropertyVetoException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-					MainFrame
-							.getInstance()
-							.getDiagramView()
-							.remove(MainFrame.getInstance().getDiagramView()
-									.get(pomIndex).getDiagram());
+							.isClosed())
+						MainFrame.getInstance().getDiagramView().get(pomIndex)
+								.dispose();
 				}
-
 			}
 
 			((Workspace) MainFrame.getInstance().getWorkspaceModel().getRoot())
@@ -150,6 +126,7 @@ public class EditDeleteFromTreeAction extends AbstractGEDAction {
 
 			SwingUtilities.updateComponentTreeUI(MainFrame.getInstance()
 					.getWorkspaceTree());
+
 		}
 
 	}

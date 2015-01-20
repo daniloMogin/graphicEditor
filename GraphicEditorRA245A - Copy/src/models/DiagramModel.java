@@ -22,7 +22,7 @@ public class DiagramModel implements Serializable {
 	private ArrayList<DiagramElement> diagramElements = new ArrayList<DiagramElement>();
 
 	transient EventListenerList listenerList = new EventListenerList();
-	transient UpdateEvent updateEvent = null;
+	UpdateEvent updateEvent = null;
 
 	private Object readResolve() {
 		listenerList = new EventListenerList();
